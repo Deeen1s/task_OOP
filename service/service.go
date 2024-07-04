@@ -11,7 +11,6 @@ type Producer interface { // описывает метод со входными
 type Presenter interface { // описывает метод с перезаписью данных
 	Present([]string) error //перезаписывает и возвращает ошибку
 }
-
 type Service struct {
 	prod Producer
 	pres Presenter
@@ -56,6 +55,5 @@ func (s *Service) Run() error {
 	if err := s.pres.Present(newText); err != nil {
 		return fmt.Errorf("Ошибка данных: %v", err) //возвращает ошибку и выводит на экран(если не удалось записать)
 	}
-
 	return nil //если успешно все проходит, то возвращает nil
 }
