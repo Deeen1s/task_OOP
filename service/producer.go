@@ -7,15 +7,15 @@ import (
 
 //реализуем чтение файла
 
-type FileRead struct {
+type FileProducer struct {
 	inFile string
 }
 
-func NewFileRead(inFile string) *FileRead { //конструктор
-	return &FileRead{inFile: inFile}
+func NewFileProducer(inFile string) *FileProducer { //конструктор
+	return &FileProducer{inFile: inFile}
 }
 
-func (f *FileRead) Produce() ([]string, error) { //метод реализации чтения данных из файла
+func (f *FileProducer) Produce() ([]string, error) { //метод реализации чтения данных из файла
 
 	file, err := os.Open(f.inFile) //открываем файл
 
