@@ -22,7 +22,7 @@ func NewService(prod Producer, pres Presenter) *Service {
 
 }
 
-func (s *Service) Mask(messege string) string { //функция
+func (s *Service) Mask(messege string) string { // функция
 
 	sliceWeb := []byte(messege)    //перевод ссылки в байты
 	sliceHttp := []byte("http://") //перевод  в байты http://

@@ -17,8 +17,8 @@ func main() {
 		outFile = os.Args[2]
 	}
 	//передал данные в наш сервис
-	prod := service.FileProducer(inFile)
-	pres := service.FilePresenter(outFile)
+	prod := service.NewFileProducer(inFile)
+	pres := service.NewFilePresenter(outFile)
 
 	serv := service.NewService(prod, pres) //создание сервиса с маскировкой в файл
 
