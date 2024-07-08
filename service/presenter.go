@@ -6,15 +6,15 @@ import (
 
 //реализуем перезапись файла
 
-type FileWrite struct {
+type FilePresenter struct {
 	inFile string
 }
 
-func FilePresenter(inFile string) *FileWrite { //конструктор
-	return &FileWrite{inFile: inFile}
+func NewFilePresenter(inFile string) *FilePresenter { //конструктор
+	return &FilePresenter{inFile: inFile}
 }
 
-func (s *FileWrite) Present(newText []string) error { //перезапись файла
+func (s *FilePresenter) Present(newText []string) error { //перезапись файла
 
 	file, err := os.Create(s.inFile) //открываем файл
 
@@ -29,5 +29,5 @@ func (s *FileWrite) Present(newText []string) error { //перезапись ф�
 			return err
 		}
 	}
-	return nil // возврат нулевого значения ошибки//
+	return nil // возврат нулевого значения ошибки
 }
