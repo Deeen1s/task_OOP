@@ -16,7 +16,7 @@ type Service struct {
 	pres Presenter
 }
 
-func ServiceNew(prod Producer, pres Presenter) *Service {
+func NewService(prod Producer, pres Presenter) *Service {
 
 	return &Service{prod: prod, pres: pres}
 

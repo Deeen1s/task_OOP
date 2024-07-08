@@ -17,10 +17,10 @@ func main() {
 		outFile = os.Args[2]
 	}
 	//передал данные в наш сервис
-	prod := service.NewFileRead(inFile)
-	pres := service.NewFileWrite(outFile)
+	prod := service.FileProducer(inFile)
+	pres := service.FilePresenter(outFile)
 
-	serv := service.ServiceNew(prod, pres) //создание сервиса с маскировкой в файл
+	serv := service.NewService(prod, pres) //создание сервиса с маскировкой в файл
 
 	if err := serv.Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "Ошибка: %v\n", err) //вывод ошибки

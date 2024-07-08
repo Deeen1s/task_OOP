@@ -10,7 +10,7 @@ type FileWrite struct {
 	inFile string
 }
 
-func NewFileWrite(inFile string) *FileWrite { //конструктор
+func FilePresenter(inFile string) *FileWrite { //конструктор
 	return &FileWrite{inFile: inFile}
 }
 

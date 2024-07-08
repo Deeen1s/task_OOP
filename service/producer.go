@@ -11,7 +11,7 @@ type FileRead struct {
 	inFile string
 }
 
-func NewFileRead(inFile string) *FileRead { //конструктор
+func FileProducer(inFile string) *FileRead { //конструктор
 	return &FileRead{inFile: inFile}
 }
 
