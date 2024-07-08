@@ -5,19 +5,18 @@ import (
 )
 
 type Producer interface { // описывает метод со входными данными
-	Produce() ([]string, error) //принимает срез строк  и возвращает ошибку
+	Produce() ([]string, error) //возвращает срез строк  и ошибку
 }
 
 type Presenter interface { // описывает метод с перезаписью данных
 	Present([]string) error //перезаписывает и возвращает ошибку
 }
-
 type Service struct {
 	prod Producer
 	pres Presenter
 }
 
-func ServiceNew(prod Producer, pres Presenter) *Service {
+func NewService(prod Producer, pres Presenter) *Service {
 
 	return &Service{prod: prod, pres: pres}
 
@@ -48,7 +47,7 @@ func (s *Service) Run() error {
 	if err != nil {
 		return fmt.Errorf("ERROR FILE %v", err) //возврат ошибки, если не прочитался файл
 	}
-	//fmt.Println("Сам текст", newText)
+
 	for ind, str := range newText {
 		newText[ind] = s.Mask(str) //маскировка каждой строки
 	}
@@ -56,6 +55,5 @@ func (s *Service) Run() error {
 	if err := s.pres.Present(newText); err != nil {
 		return fmt.Errorf("Ошибка данных: %v", err) //возвращает ошибку и выводит на экран(если не удалось записать)
 	}
-
 	return nil //если успешно все проходит, то возвращает nil
 }
