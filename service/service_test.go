@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestService(t *testing.T) { //тест без ошибок
+func TestService(t *testing.T) { // тест без ошибок
 
 	mockProducer := new(mocks.Producer)   // Создаем экземпляр mockProducer
 	mockPresenter := new(mocks.Presenter) // Создаем экземпляр mockPresenter

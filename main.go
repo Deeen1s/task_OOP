@@ -27,6 +27,6 @@ func main() {
 		os.Exit(1)                                  //завершение с кодом ошибки
 	}
 
-	fmt.Println("Выполнено!\nВыходной файл:", outFile)
+	fmt.Println("Выполнено!\n Выходной файл:", outFile)
 
 }

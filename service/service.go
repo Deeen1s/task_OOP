@@ -1,15 +1,13 @@
 package service
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type Producer interface { // описывает метод со входными данными
+type Producer interface { //описывает метод со входными данными
 	Produce() ([]string, error) //возвращает срез строк  и ошибку
 }
 
 type Presenter interface { // описывает метод с перезаписью данных
-	Present([]string) error //перезаписывает и возвращает ошибку
+	Present([]string) error //перезаписывает и возвращает ошибку/
 }
 type Service struct {
 	prod Producer
@@ -31,6 +29,7 @@ func (s *Service) Mask(messege string) string { // функция
 		if i <= len(messege)-len(sliceHttp) && string(sliceWeb[i:i+len(sliceHttp)]) == "http://" { //проверяем элементы на схожесть с http://
 			i += len(sliceHttp)
 			for i < len(messege) && sliceWeb[i] != ' ' { // маскировка ссылки до пробела
+
 				sliceWeb[i] = '*'
 				i++
 			}
@@ -49,7 +48,7 @@ func (s *Service) Run() error {
 	}
 
 	for ind, str := range newText {
-		newText[ind] = s.Mask(str) //маскировка каждой строки
+		newText[ind] = s.Mask(str)
 	}
 
 	if err := s.pres.Present(newText); err != nil {
