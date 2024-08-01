@@ -5,7 +5,7 @@ import (
 )
 
 type Producer interface { // описывает метод со входными данными
-	Produce() ([]string, error) //принимает срез строк  и возвращает ошибку
+	Produce() ([]string, error) //возвращает срез строк  и ошибку
 }
 
 type Presenter interface { // описывает метод с перезаписью данных
@@ -47,7 +47,7 @@ func (s *Service) Run() error {
 	if err != nil {
 		return fmt.Errorf("ERROR FILE %v", err) //возврат ошибки, если не прочитался файл
 	}
-	//fmt.Println("Сам текст", newText)
+
 	for ind, str := range newText {
 		newText[ind] = s.Mask(str) //маскировка каждой строки
 	}
